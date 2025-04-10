@@ -1,0 +1,9 @@
+site_name: 'book info 2.0'
+theme:
+  name: 'material'
+nav:
+  - Описание: index.md
+  - Установка: installation.md
+  - Books:
+      - GET: get/get_books.md
+
