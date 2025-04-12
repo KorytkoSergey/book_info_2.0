@@ -2,6 +2,8 @@ site_name: 'book info 2.0'
 theme:
   name: 'material'
 nav:
+  - test:
+      - test: test.md
   - Описание: index.md
   - Установка: installation.md
   - Books:
