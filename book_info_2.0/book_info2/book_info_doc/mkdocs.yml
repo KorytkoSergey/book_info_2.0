@@ -6,4 +6,8 @@ nav:
   - Установка: installation.md
   - Books:
       - GET: get/get_books.md
+  - Оплата:
+      - Проверка: payment/check.md
+      - Оплата: payment/confirm.md
+      - Подтверждение: payment/notify.md
 
