@@ -1,13 +1,25 @@
 site_name: 'book info 2.0'
 theme:
   name: 'material'
+markdown_extensions:
+  - pymdownx.tasklist
 nav:
-  - test:
-      - test: test.md
-  - Описание: index.md
+  - О проекте: index.md
   - Установка: installation.md
-  - Books:
+  - База данных:
+    - Схема: schema.md
+    - Стартовые скрипты: start_db.md
+    - CRUD: crud.md
+  - API:
+    - Авторизация:
+      - GET: get/get_auth.md
+      - POST: post/post_auth.md
+    - Пользователи:
+      - GET: get/get_users.md
+      - POST: post/post_users.md
+    - Книги:
       - GET: get/get_books.md
+      - POST: post/post_books.md
   - Оплата:
       - Проверка: payment/check.md
       - Оплата: payment/confirm.md
