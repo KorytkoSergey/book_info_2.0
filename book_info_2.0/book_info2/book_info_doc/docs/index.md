@@ -7,6 +7,7 @@
 - [ ]  Описание документации по API(+ описание json и xml)
 - [ ]  Диплой документации через github 
 - [ ]  Диплой API
+- [ ]  Добавить readme в гит
 -  <span style="color: orange; font-weight: bold;">ver. 2.0</span>
 - [ ]  Добавление пагинации 
 - [ ]  Разворачивание swagger

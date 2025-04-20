@@ -3,25 +3,29 @@ theme:
   name: 'material'
 markdown_extensions:
   - pymdownx.tasklist
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+plugins:
+  - glightbox
 nav:
   - О проекте: index.md
   - Установка: installation.md
   - База данных:
-    - Схема: schema.md
-    - Стартовые скрипты: start_db.md
-    - CRUD: crud.md
+    - Схема: db/schema.md
+    - Стартовые скрипты: db/start_db.md
+    - CRUD: db/crud.md
   - API:
     - Авторизация:
-      - GET: get/get_auth.md
-      - POST: post/post_auth.md
+      - GET: API/get/get_auth.md
+      - POST: API/post/post_auth.md
     - Пользователи:
-      - GET: get/get_users.md
-      - POST: post/post_users.md
+      - GET: API/get/get_users.md
+      - POST: API/post/post_users.md
     - Книги:
-      - GET: get/get_books.md
-      - POST: post/post_books.md
+      - GET: API/get/get_books.md
+      - POST: API/post/post_books.md
   - Оплата:
       - Проверка: payment/check.md
       - Оплата: payment/confirm.md
       - Подтверждение: payment/notify.md
-
