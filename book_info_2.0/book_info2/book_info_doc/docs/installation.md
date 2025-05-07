@@ -21,7 +21,7 @@ Github https://github.com/KorytkoSergey/book_info_2.0
 
 - **Обновить пакеты, если уже установлены:**
     
-    ```bash
+    ```
     pip install --upgrade -r requirements.txt
     ```
     

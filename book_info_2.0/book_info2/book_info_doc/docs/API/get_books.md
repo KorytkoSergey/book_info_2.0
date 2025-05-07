@@ -20,28 +20,28 @@
 
 ### Пример запроса
 
-```bash
+```
 GET /books?author=Rowling&year=2007
 ```
 
 Пример запроса HTTP
 
-```bash
+```
 GET /books HTTP/1.1
 Host: 127.0.0.1:5000
 Authorization: Bearer {your toker}
 ```
 
-Пример запроса cURL
+Пример запроса **cURL**
 
-```bash
+```
 curl --silent --location 'http://127.0.0.1:5000/books?author=Rowling&year=2007' `
 --header 'Authorization: Bearer {your toker}' | jq
 ```
 
 Пример ответа
 
-```bash
+```
  [
 		 {
         "Дата издания": 1876,

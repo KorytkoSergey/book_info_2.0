@@ -15,16 +15,15 @@ nav:
     - Схема: db/schema.md
     - Стартовые скрипты: db/start_db.md
     - CRUD: db/crud.md
+  - Авторизация: get_auth.md
   - API:
-    - Авторизация:
-      - GET: API/get/get_auth.md
-      - POST: API/post/post_auth.md
+    - Книги:
+      - Получение книг по параметрам запроса: API/get_books.md
+      - Получение книги по id: API/get_books_by_id.md
+      - Добавление новой книги: API/post_books.md
     - Пользователи:
       - GET: API/get/get_users.md
       - POST: API/post/post_users.md
-    - Книги:
-      - GET: API/get/get_books.md
-      - POST: API/post/post_books.md
   - Оплата:
       - Проверка: payment/check.md
       - Оплата: payment/confirm.md
