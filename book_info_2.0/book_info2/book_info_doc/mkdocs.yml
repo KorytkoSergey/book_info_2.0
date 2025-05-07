@@ -18,12 +18,22 @@ nav:
   - Авторизация: get_auth.md
   - API:
     - Книги:
-      - Получение книг по параметрам запроса: API/get_books.md
-      - Получение книги по id: API/get_books_by_id.md
-      - Добавление новой книги: API/post_books.md
-    - Пользователи:
-      - GET: API/get/get_users.md
-      - POST: API/post/post_users.md
+      - Получение книг по параметрам запроса: API/books/get_books.md
+      - Получение книги по id: API/books/get_books_by_id.md
+      - Добавление новой книги: API/books/post_books.md
+      - Изменение книги: API/books/put_books.md
+      - Удаление книги: API/books/delete_books.md
+    - Читатели:
+      - Получение читателей по параметрам запроса: API/readers/get_readers.md
+      - Добавление нового читателя: API/readers/post_readers.md
+      - Изменение читателя: API/readers/put_readers.md
+    - Работники:
+      - Получение работников по параметрам запроса: API/workers/get_workers.md
+      - Изменение работника: API/workers/put_workers.md
+    - Писатели:
+      - Получение писателей по параметрам запроса: API/writers/get_writers.md
+      - Добавление нового писателя: API/writers/post_writers.md
+      - Изменение писателя: API/writers/put_writers.md
   - Оплата:
       - Проверка: payment/check.md
       - Оплата: payment/confirm.md
