@@ -34,7 +34,5 @@ nav:
       - Получение писателей по параметрам запроса: API/writers/get_writers.md
       - Добавление нового писателя: API/writers/post_writers.md
       - Изменение писателя: API/writers/put_writers.md
-  - Оплата:
-      - Проверка: payment/check.md
-      - Оплата: payment/confirm.md
-      - Подтверждение: payment/notify.md
+  - Оплата: payment.md
+
