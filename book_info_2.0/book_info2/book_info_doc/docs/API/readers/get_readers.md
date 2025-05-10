@@ -33,7 +33,7 @@ Host: 127.0.0.1:5000
 Authorization: Bearer {your toker}
 ```
 
-Пример запроса cURL
+Пример запроса **cURL**
 
 ```bash
 curl --silent --location 'http://127.0.0.1:5000/readers?min_books=2' `

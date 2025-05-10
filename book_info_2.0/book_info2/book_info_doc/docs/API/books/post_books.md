@@ -26,7 +26,7 @@
 
 ### Пример запроса
 
-Пример самого <span style="color: magenta; font-weight: bold;">json</span>
+Пример самого json
 
 ```
 {

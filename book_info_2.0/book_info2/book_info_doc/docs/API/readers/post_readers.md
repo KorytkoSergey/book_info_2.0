@@ -41,7 +41,7 @@
 }
 ```
 
-Пример запроса cURL
+Пример запроса **cURL**
 
 ```bash
 curl --silent --location --request POST '[http://127.0.0.1:5000/readers](http://127.0.0.1:5000/readers/7)' 
