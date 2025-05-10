@@ -4,7 +4,7 @@
 
 Архитектура с разделением ответственности: выделенные API для обработки данных и оплаты, где API оплаты не имеет доступа к БД, а основной API централизует работу с данными и взаимодействие с хранилищем.
 
-![Image title](https://raw.githubusercontent.com/KorytkoSergey/book_info_2.0/main/book_info_2.0/book_info2/book_info_doc/docs/images/schema_api.png.png){ loading=lazy }
+![Image title](https://raw.githubusercontent.com/KorytkoSergey/book_info_2.0/main/book_info_2.0/book_info2/book_info_doc/docs/images/schema_api.png){ loading=lazy }
 
 Фронтенда пока нет. В будущих версиях фронтом может выступать телеграмм бот. 
 
