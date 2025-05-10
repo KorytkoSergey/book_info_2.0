@@ -209,7 +209,7 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      План развития
+      Описание ресурса
     </span>
   </a>
   
@@ -218,7 +218,16 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Описание ресурса
+      История изменений
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      План развития
     </span>
   </a>
   
@@ -967,7 +976,7 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      План развития
+      Описание ресурса
     </span>
   </a>
   
@@ -976,7 +985,16 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Описание ресурса
+      История изменений
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      План развития
     </span>
   </a>
   
@@ -1000,16 +1018,24 @@
 
   <h1>О проекте</h1>
 
-<h3 id="_1">План развития</h3>
+<h3 id="_1">Описание ресурса</h3>
+<p>Архитектурное решение для библиотек. Позволяет выдавать информацию о книгах, писателях и читателях. Позволяет получать информацию о сотрудниках и редактировать. </p>
+<p>Архитектура с разделением ответственности: выделенные API для обработки данных и оплаты, где API оплаты не имеет доступа к БД, а основной API централизует работу с данными и взаимодействие с хранилищем.</p>
+<p><a class="glightbox" href="https://raw.githubusercontent.com/KorytkoSergey/book_info_2.0/main/book_info_2.0/book_info2/book_info_doc/docs/images/schema_api.png.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Image title" loading="lazy" src="https://raw.githubusercontent.com/KorytkoSergey/book_info_2.0/main/book_info_2.0/book_info2/book_info_doc/docs/images/schema_api.png.png" /></a></p>
+<p>Фронтенда пока нет. В будущих версиях фронтом может выступать телеграмм бот. </p>
+<h2 id="_2">История изменений</h2>
+<p>10.05.2025 Завершена <span style="color: orange; font-weight: bold;">ver. 1.0</span> Вся актуальная ифнормация по проекту содержится в этой документации.</p>
+<p>25.03.2025 Реализована БД на базе PostgresSQL. Также развернута не ассинхроное API на базе фреймворка Flask для отработки запросов и описания эндпоинтов.</p>
+<h2 id="_3">План развития</h2>
 <ul class="task-list">
 <li><span style="color: orange; font-weight: bold;">ver. 1.0</span></li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> Общее описание проекта.</li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> Построение БД: файл разворачивания бд, файл crud и операций.</li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> Описание документации БД</li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> Разворачивание API book_info и bank</li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> Описание авторизации и аунтификации </li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> Описание документации по API(+ описание json и xml). Описание кодов ошибок.</li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> Диплой документации через github </li>
-<li class="task-list-item"><input type="checkbox" disabled checked/> Диплой API. Использовать https. </li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> Добавить readme в гит</li>
 <li><span style="color: orange; font-weight: bold;">ver. 2.0</span></li>
 <li class="task-list-item"><input type="checkbox" disabled/> Добавление пагинации </li>
@@ -1019,14 +1045,9 @@
 <em>Данный раздел является дополнительным. Так сказать "лучшие практики"</em></li>
 <li class="task-list-item"><input type="checkbox" disabled/> Добавление эндпоинта /health для автоматической проверки работоспособности API </li>
 <li class="task-list-item"><input type="checkbox" disabled/> Добавить в эндпоинты версионность API</li>
-<li class="task-list-item"><input type="checkbox" disabled/> Rate limiter и Throttling. Ограничение запросов и защита от ddos атак и злоумышлеников. </li>
 <li class="task-list-item"><input type="checkbox" disabled/> Подумать о внедрении балансировщика, хотя бы простого. </li>
-<li class="task-list-item"><input type="checkbox" disabled/> Добавить простые тесты в CI/CD </li>
 <li class="task-list-item"><input type="checkbox" disabled/> Добавить в схему мониторинг (например Zabbix или Графана) для оповещения по критическим событиям. Возможно добавить Оповещение черз Теллеграм - бота.</li>
 </ul>
-<h3 id="_2">Описание ресурса</h3>
-<p>Архитектурное решение для библиотек. Позволяет выдавать информацию о книгах, писателях и читателях. Позволяет получать информацию о сотрудниках и редактировать. В версии 1.0 было реализация на Джанго и подключался телеграмм бот. </p>
-<p>25.03.2025 Реализована БД на базе PostgresSQL. Также развернута не ассинхроное API на базе фреймворка Flask для отработки запросов и описания эндпоинтов.</p>
 
 
 
