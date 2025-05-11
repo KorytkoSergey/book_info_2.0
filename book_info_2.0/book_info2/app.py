@@ -7,13 +7,12 @@ from query import PUT_WRITERS_QUERY, PUT_READERS_QUERY, PUT_WORKERS_QUERY, PUT_B
 from query import DELETE_BOOKS_QUERY
 from models import Book, Worker, History, Nation  
 from sqlalchemy.sql import text
-import os
+
 
 app = Flask(__name__)
 
 # Настройки базы данных
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-default-secret-key')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/book_info_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = 'super-secret-key'
 
