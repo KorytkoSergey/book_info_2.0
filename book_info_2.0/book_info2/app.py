@@ -212,7 +212,7 @@ def get_workers():
     filters = []
 
     if worker_name:
-        filters.append("CONCAT(w.surname, '_', w.name, '_', w.second_name) ILIKE ::worker_name")
+        filters.append("CONCAT(w.surname, '_', w.name, '_', w.second_name) ILIKE :worker_name")
         params["worker_name"] = f"%{worker_name}%"
 
     if worker_id:
