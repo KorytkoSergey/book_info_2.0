@@ -7,9 +7,11 @@ from query import PUT_WRITERS_QUERY, PUT_READERS_QUERY, PUT_WORKERS_QUERY, PUT_B
 from query import DELETE_BOOKS_QUERY
 from models import Book, Worker, History, Nation  
 from sqlalchemy.sql import text
+from flasgger import Swagger
 
 
 app = Flask(__name__)
+swagger = Swagger(app, template_file='book_info_doc/docs/swagger/swagger.yaml')
 
 # Настройки базы данных
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/book_info_db'

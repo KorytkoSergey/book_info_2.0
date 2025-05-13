@@ -1,0 +1,52 @@
+swagger: "2.0"
+info:
+  title: BookInfo API
+  description: API для управления библиотекой
+  version: "1.0"
+
+host: localhost:5000
+basePath: /
+schemes:
+  - http
+
+paths:
+  /books:
+    get:
+      summary: Получить список всех книг
+      responses:
+        200:
+          description: Успешный ответ
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                title:
+                  type: string
+                author:
+                  type: string
+
+  /books/{book_id}:
+    get:
+      summary: Получить книгу по ID
+      parameters:
+        - name: book_id
+          in: path
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Найдено
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+              author:
+                type: string
+        404:
+          description: Книга не найдена
