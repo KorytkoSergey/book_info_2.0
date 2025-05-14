@@ -38,8 +38,3 @@ Github https://github.com/KorytkoSergey/book_info_2.0
     ```
 
 
-
-<iframe
-  src="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/KorytkoSergey/book_info_2.0/main/book_info_doc/docs/swagger/swagger.yml"
-  style="width:100%; height:600px; border:none;"
-></iframe>

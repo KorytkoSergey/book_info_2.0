@@ -11,7 +11,7 @@ from flasgger import Swagger
 
 
 app = Flask(__name__)
-swagger = Swagger(app, template_file='book_info_doc/docs/swagger/swagger.yaml')
+swagger = Swagger(app, template_file='book_info_doc/docs/swagger-ui/swagger.yaml')
 
 # Настройки базы данных
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/book_info_db'
