@@ -38,7 +38,9 @@ Github https://github.com/KorytkoSergey/book_info_2.0
     ```
 
 
+## API Документация
+
 <iframe
-  src="swagger-ui/index.html"
+  src="http://127.0.0.1:8000/swagger-ui/"
   style="width: 100%; height: 700px; border: none;"
 ></iframe>
