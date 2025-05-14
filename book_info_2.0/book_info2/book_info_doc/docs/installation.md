@@ -38,3 +38,7 @@ Github https://github.com/KorytkoSergey/book_info_2.0
     ```
 
 
+<iframe
+  src="swagger-ui/index.html"
+  style="width: 100%; height: 700px; border: none;"
+></iframe>

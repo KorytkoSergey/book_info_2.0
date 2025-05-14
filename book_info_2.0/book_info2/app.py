@@ -8,9 +8,10 @@ from query import DELETE_BOOKS_QUERY
 from models import Book, Worker, History, Nation  
 from sqlalchemy.sql import text
 from flasgger import Swagger
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 swagger = Swagger(app, template_file='book_info_doc/docs/swagger-ui/swagger.yaml')
 
 # Настройки базы данных

@@ -9,25 +9,17 @@ basePath: /
 schemes:
   - http
 
-paths:
-  /books:
-    get:
-      summary: Получить список всех книг
-      responses:
-        200:
-          description: Успешный ответ
-          schema:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                title:
-                  type: string
-                author:
-                  type: string
+securityDefinitions:
+  BearerAuth:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
 
+security:
+  - BearerAuth: []
+
+paths:
   /books/{book_id}:
     get:
       summary: Получить книгу по ID
