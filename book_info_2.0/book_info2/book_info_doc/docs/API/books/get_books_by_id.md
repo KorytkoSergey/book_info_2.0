@@ -58,9 +58,8 @@ curl --silent --location 'http://127.0.0.1:5000/books/{book_id}' `
     }
   ]
 ```
-# Получение книги по ID
-
+# Swagger
 <iframe
-  src="https://0fb9-37-99-64-112.ngrok-free.app/swagger-ui/swagger_get_books_id.html"
+  src="http://127.0.0.1:8000/swagger-ui/get_books_id.html"
   style="width: 100%; height: 700px; border: none;"
 ></iframe>
