@@ -4,7 +4,7 @@ info:
   description: API для управления библиотекой
   version: "1.0"
 
-host: localhost:5000
+host: 9ce8-37-99-64-112.ngrok-free.app
 basePath: /
 schemes:
   - http
