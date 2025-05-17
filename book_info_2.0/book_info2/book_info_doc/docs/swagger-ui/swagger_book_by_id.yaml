@@ -4,7 +4,7 @@ info:
   description: Получение книги по ID
   version: "1.0"
 
-host: a8b6-37-99-64-112.ngrok-free.app
+host: 1143-37-99-64-112.ngrok-free.app
 basePath: /
 schemes:
   - http
