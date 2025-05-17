@@ -41,6 +41,6 @@ Github https://github.com/KorytkoSergey/book_info_2.0
 ## API Документация
 
 <iframe
-  src="0fb9-37-99-64-112.ngrok-free.app/swagger-ui/"
+  src="http://127.0.0.1:8000/swagger-ui/"
   style="width: 100%; height: 700px; border: none;"
 ></iframe>
