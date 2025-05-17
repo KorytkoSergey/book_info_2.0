@@ -4,7 +4,7 @@ info:
   description: "endpoint для получения книги по ID"
   version: "1.0"
   contact:
-    name: "Корытко Сергей"
+    name: "korytkosergei28@gmail.com"
     email: "korytkosergei28@gmail.com"
 servers:
 - url: http://127.0.0.1:5000/
@@ -38,27 +38,35 @@ paths:
                   Дата издания:
                     type: number
                     description: "Формат даты просто год, например 2023"
+                    example: 2023
                   Жанр:
                     type: string
                     description: "Жанр книги, например: Фантастика"
+                    example: Фантастика
                   Издательство:
                     type: string
                     description: "Издательство книги, например: Эксмо"
+                    example: Эксмо
                   Название:
                     type: string
                     description: "Название книги, например: Колобок"
+                    example: Колобок
                   Нахождение:
                     type: string
                     description: "Где находится книга. Возможно два состояния: На руках или В библеотеке"
+                    example: На руках
                   Работник библиотеки:
                     type: string
                     description: "Работник библиотеки, который выдал книгу. Например: Иванов Иван Иванович. Также может быть значение Ни кем не выдавалась, если книга не выдана"
+                    example: Иванов Иван Иванович
                   ФИО Автора:
                     type: string
                     description: "ФИО автора книги. Например: Пушкин Александр Сергеевич"
+                    example: Пушкин Александр Сергеевич
                   Язык:
                     type: string
                     description: "Язык книги. Например: Русский"
+                    example: Русский
         "404":
           description: Книга не найдена
           content:
@@ -76,4 +84,6 @@ components:
       description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
       name: Authorization
       in: header
-x-original-swagger-version: "2.0"
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0

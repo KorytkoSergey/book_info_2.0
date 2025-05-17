@@ -76,3 +76,8 @@ curl --silent --location 'http://127.0.0.1:5000/books?author=Rowling&year=2007' 
     }
   ]
 ```
+# Swagger
+<iframe
+  src="http://127.0.0.1:8000/swagger-ui/get_books.html"
+  style="width: 100%; height: 700px; border: none;"
+></iframe>
