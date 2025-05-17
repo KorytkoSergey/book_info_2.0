@@ -1,0 +1,44 @@
+swagger: "2.0"
+info:
+  title: BookInfo API
+  description: API для управления библиотекой
+  version: "1.0"
+
+host: localhost:5000
+basePath: /
+schemes:
+  - http
+
+securityDefinitions:
+  BearerAuth:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+
+security:
+  - BearerAuth: []
+
+paths:
+  /books/{book_id}:
+    get:
+      summary: Получить книгу по ID
+      parameters:
+        - name: book_id
+          in: path
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Найдено
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+              author:
+                type: string
+        404:
+          description: Книга не найдена
