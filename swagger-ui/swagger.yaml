@@ -7,7 +7,7 @@ info:
 host: 0fb9-37-99-64-112.ngrok-free.app
 basePath: /
 schemes:
-  - http
+  - https
 
 securityDefinitions:
   BearerAuth:
