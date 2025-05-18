@@ -1,0 +1,155 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для изинении информации о читателях"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /readers/{reader_id}:
+    put:
+      summary: Обновить информацию о читателе
+      description: Меняет информацию по конкретному читателю
+      tags:
+        - Новая информация о читателе
+      parameters:
+        - name: reader_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Уникальный идентификатор читателя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - surname
+                - name
+                - second_name
+                - aboniment
+                - active_aboniment
+                - birth_date
+                - phone_number
+                - email
+                - address
+              properties:
+                surname:
+                  type: string
+                  example: Корытко
+                name:
+                  type: string
+                  example: Алексей
+                second_name:
+                  type: string
+                  example: Сергеевич
+                aboniment:
+                  type: integer
+                  format: int64
+                  example: 45168254
+                active_aboniment:
+                  type: boolean
+                  example: true
+                birth_date:
+                  type: string
+                  format: date
+                  example: 1990-05-12
+                phone_number:
+                  type: string
+                  example: "+79876853210"
+                email:
+                  type: string
+                  format: email
+                  example: ivanqov.alex@mail.ru
+                address:
+                  type: string
+                  example: Казань, ул. Баумана, д. 3
+      responses:
+        '200':
+          description: Читатель успешно обновлён
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Читатель успешно обновлён
+                  reader:
+                    type: object
+                    properties:
+                      reader_id:
+                        type: integer
+                        example: 7
+                      name:
+                        type: string
+                        example: Алексей
+                      surname:
+                        type: string
+                        example: Корытко
+                      second_name:
+                        type: string
+                        example: Сергеевич
+                      aboniment:
+                        type: integer
+                        example: 45168254
+                      active_aboniment:
+                        type: boolean
+                        example: true
+                      birth_date:
+                        type: string
+                        example: Sat, 12 May 1990 00:00:00 GMT
+                      phone_number:
+                        type: string
+                        example: "+79876853210"
+                      email:
+                        type: string
+                        example: ivanqov.alex@mail.ru
+                      address:
+                        type: string
+                        example: Казань, ул. Баумана, д. 3
+                      registration_date:
+                        type: string
+                        example: Mon, 24 Mar 2025 17:00:15 GMT
+        '400':
+          description: Ошибка общего типа
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Неверные данные
+        '404':
+          description: Читатель не найден
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Читатель с ID 7 не найден
+        '401':
+          description: Неавторизован (отсутствует или неверный токен)
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0

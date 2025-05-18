@@ -73,3 +73,8 @@ curl --silent --location --request PUT 'http://127.0.0.1:5000/readers/7'
     }
 }
 ```
+# Swagger
+<iframe
+  src="http://127.0.0.1:8000/swagger-ui/put_readers.html"
+  style="width: 100%; height: 700px; border: none;"
+></iframe>
