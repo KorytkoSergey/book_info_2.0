@@ -1,0 +1,115 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для получения информации о читателях"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /writers:
+    get:
+      summary: Получение информации о писателях
+      description: >
+        Получает список писателей, либо информацию о конкретном писателе по параметрам фильтрации.
+        Может возвращать один, несколько или ноль объектов в зависимости от запроса.
+        Требуется авторизация через Bearer токен.
+      tags:
+        - Writers
+      parameters:
+        - name: writer_id
+          in: query
+          description: ID писателя из таблицы `writers`
+          schema:
+            type: integer
+          example: 168
+        - name: writer_name
+          in: query
+          description: ФИО писателя. Поддерживает частичное совпадение.
+          schema:
+            type: string
+          example: Булгаков
+        - name: book
+          in: query
+          description: Название книги
+          schema:
+            type: string
+          example: Колобок
+        - name: nation
+          in: query
+          description: Страна рождения писателя
+          schema:
+            type: string
+          example: Япония
+        - name: only_without_books
+          in: query
+          description: Фильтр писателей без книг. `true` — только без книг, `false` — все
+          schema:
+            type: boolean
+          example: true
+      responses:
+        '200':
+          description: Список писателей
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    writer_id:
+                      type: integer
+                      example: 200
+                    FIO:
+                      type: string
+                      example: Гейне Генрих Неизвестно
+                    birth_date:
+                      type: string
+                      format: date-time
+                      example: Wed, 13 Dec 1797 00:00:00 GMT
+                    books_name:
+                      type: string
+                      example: Книга 127, Книга 199, Король говорит
+                    country:
+                      type: string
+                      example: Германия
+                    info:
+                      type: string
+                      example: Известный писатель.
+        '400':
+          description: Ошибка в параметрах запроса
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Некорректные параметры запроса
+        '401':
+          description: Неавторизован
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Необходима авторизация
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0

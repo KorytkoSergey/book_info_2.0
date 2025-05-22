@@ -1,0 +1,140 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для получения информации о читателях"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /writers/{writer_id}:
+    put:
+      summary: Обновление информации о писателе
+      description: Изменяет данные писателя по его ID. Требует авторизации.
+      tags:
+        - Writers
+      parameters:
+        - name: writer_id
+          in: path
+          required: true
+          description: Уникальный ID писателя
+          schema:
+            type: integer
+            example: 176
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - last_name
+                - name
+                - second_name
+                - birth_date
+                - nationality
+                - info
+              properties:
+                last_name:
+                  type: string
+                  example: Чехов
+                name:
+                  type: string
+                  example: Антон
+                second_name:
+                  type: string
+                  example: Павлович
+                birth_date:
+                  type: string
+                  format: date
+                  example: 1860-01-29
+                nationality:
+                  type: integer
+                  description: ID из таблицы shelf.nation
+                  example: 94
+                info:
+                  type: string
+                  description: Краткая биография
+                  example: Все делаем своими руками. Мансарда
+      responses:
+        '200':
+          description: Писатель успешно обновлён
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Писатель успешно обновлён
+                  writer:
+                    type: object
+                    properties:
+                      writer_id:
+                        type: integer
+                        example: 176
+                      last_name:
+                        type: string
+                        example: Чехов
+                      name:
+                        type: string
+                        example: Антон
+                      second_name:
+                        type: string
+                        example: Павлович
+                      birth_date:
+                        type: string
+                        example: Sun, 29 Jan 1860 00:00:00 GMT
+                      nationality:
+                        type: integer
+                        example: 94
+                      info:
+                        type: string
+                        example: Все делаем своими руками. Мансарда
+        '400':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Неверные данные
+        '404':
+          description: Писатель не найден
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Писатель не найден
+        '401':
+          description: Неавторизован
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Необходима авторизация
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0

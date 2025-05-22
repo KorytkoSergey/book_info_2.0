@@ -1,0 +1,153 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для получения информации о читателях"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /workers/{worker_id}:
+    put:
+      summary: Обновление информации о работнике
+      description: >
+        Обновляет информацию о работнике библиотеки по его `worker_id`.
+        Требует авторизацию через Bearer токен.
+      tags:
+        - Workers
+      parameters:
+        - name: worker_id
+          in: path
+          required: true
+          description: ID сотрудника
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - surname
+                - name
+                - second_name
+                - role
+                - status
+                - birth_date
+                - phone_number
+                - email
+                - address
+              properties:
+                surname:
+                  type: string
+                  example: Собакин
+                name:
+                  type: string
+                  example: Иван
+                second_name:
+                  type: string
+                  example: Дмитриевич
+                role:
+                  type: integer
+                  example: 3
+                  description: ID роли сотрудника из таблицы `roles`
+                status:
+                  type: integer
+                  example: 3
+                  description: ID статуса сотрудника из таблицы `status`
+                birth_date:
+                  type: string
+                  format: date
+                  example: 1997-02-21
+                phone_number:
+                  type: string
+                  example: +773241564589
+                email:
+                  type: string
+                  format: email
+                  example: dfghj@fghj.com
+                address:
+                  type: string
+                  example: dfghjklfghj,fgbnm
+      responses:
+        '200':
+          description: Работник успешно обновлён
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Работник успешно обновлён
+                  worker:
+                    type: object
+                    properties:
+                      worker_id:
+                        type: integer
+                        example: 32
+                      surname:
+                        type: string
+                        example: Собакин
+                      name:
+                        type: string
+                        example: Иван
+                      second_name:
+                        type: string
+                        example: Дмитриевич
+                      role:
+                        type: integer
+                        example: 3
+                      status:
+                        type: integer
+                        example: 3
+                      birth_date:
+                        type: string
+                        example: Fri, 21 Feb 1997 00:00:00 GMT
+                      phone_number:
+                        type: string
+                        example: +773241564589
+                      email:
+                        type: string
+                        example: dfghj@fghj.com
+                      address:
+                        type: string
+                        example: dfghjklfghj,fgbnm
+        '400':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Неверный формат запроса или отсутствуют обязательные поля
+        '404':
+          description: Работник не найден
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Работник с указанным ID не найден
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0

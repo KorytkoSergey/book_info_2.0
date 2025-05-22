@@ -68,3 +68,8 @@ curl --silent
     }
    ]
 ```
+# Swagger
+<iframe
+  src="http://127.0.0.1:8000/swagger-ui/get_writers.html"
+  style="width: 100%; height: 700px; border: none;"
+></iframe>

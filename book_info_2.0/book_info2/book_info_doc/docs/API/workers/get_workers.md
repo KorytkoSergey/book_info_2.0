@@ -71,3 +71,8 @@ curl --silent --location 'http://127.0.0.1:5000/workers?role=Стажер}' `
     }
   ]
 ```
+# Swagger
+<iframe
+  src="http://127.0.0.1:8000/swagger-ui/get_workers.html"
+  style="width: 100%; height: 700px; border: none;"
+></iframe>
