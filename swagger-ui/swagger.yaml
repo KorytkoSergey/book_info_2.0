@@ -4,10 +4,10 @@ info:
   description: API для управления библиотекой
   version: "1.0"
 
-host: 0fb9-37-99-64-112.ngrok-free.app
+host: 127.0.0.1:5000
 basePath: /
 schemes:
-  - https
+  - http
 
 securityDefinitions:
   BearerAuth:

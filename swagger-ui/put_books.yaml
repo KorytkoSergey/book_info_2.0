@@ -1,0 +1,123 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для обновлении информации о книге"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /books/{book_id}:
+    put:
+      tags:
+        - Обновление информации о книге
+      summary: Обновление информации о книге
+      description: Обновляет значения в базе данных по указанной книге.
+      parameters:
+        - name: book_id
+          in: path
+          required: true
+          description: Уникальный идентификатор книги
+          schema:
+            type: integer
+            example: 4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                book_name:
+                  type: string
+                  example: Тракторист Иван
+                date_publish:
+                  type: integer
+                  example: 1999
+                language:
+                  type: integer
+                  description: ID языка из таблицы `shelf.lang`
+                  example: 5
+                publish:
+                  type: integer
+                  description: ID издательства из таблицы `shelf.publish`
+                  example: 30
+                writer:
+                  type: integer
+                  description: ID писателя из таблицы `shelf.writers`
+                  example: 309
+                genre:
+                  type: integer
+                  description: ID жанра из таблицы `shelf.genre`
+                  example: 5
+              required:
+                - book_name
+                - date_publish
+                - language
+                - publish
+                - writer
+                - genre
+      responses:
+        '200':
+          description: Книга успешно обновлена
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Книга успешно обновлена
+                  book:
+                    type: object
+                    properties:
+                      book_id:
+                        type: integer
+                        example: 4
+                      book_name:
+                        type: string
+                        example: Тракторист Иван
+                      date_publish:
+                        type: integer
+                        example: 1999
+                      genre:
+                        type: integer
+                        example: 5
+                      language:
+                        type: integer
+                        example: 5
+                      publish:
+                        type: integer
+                        example: 30
+                      writer:
+                        type: integer
+                        example: 309
+        '404':
+          description: Книга не найдена
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Книга не найдена
+        '401':
+          description: Не авторизован
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0

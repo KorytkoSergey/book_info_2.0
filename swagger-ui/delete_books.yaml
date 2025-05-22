@@ -1,0 +1,72 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для удаления книги по ID"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /books/{book_id}:
+    delete:
+      tags:
+        - Удаление книги по ID
+      summary: Удаление книги по ID
+      description: Удаляет из БД конкретную книгу. Запрос осуществляется только по `book_id`.
+      parameters:
+        - name: book_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Уникальный идентификатор книги
+      responses:
+        '200':
+          description: Книга успешно удалена
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Книга успешно удалена
+        '404':
+          description: Книга не найдена
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Книга не найдена
+        '400':
+          description: Общая ошибка (на стороне клиента или сервера)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Произошла ошибка при удалении книги
+        '401':
+          description: Не авторизован
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0

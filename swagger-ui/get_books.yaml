@@ -1,0 +1,123 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для информации о книгах"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /books:
+    get:
+      tags:
+        - Получение списка книг
+      summary: Получение списка книг с фильтрацией
+      description: |
+        Возвращает список книг. Можно фильтровать по автору, году, жанру, названию, издательству, языку и местоположению.
+      parameters:
+        - name: writer
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Фильтр по автору книги (используйте подчеркивание вместо пробелов)
+          example: Василиса_Галкина_Алексеевна
+        - name: year
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Фильтр по году издания
+          example: 1876
+        - name: genre
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Фильтр по жанру книги
+          example: Фантастика
+        - name: book_name
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Фильтр по названию книги
+          example: Колобок
+        - name: publish
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Фильтр по издательству книги
+          example: Дрофа
+        - name: language
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Фильтр по языку
+          example: Русский
+        - name: place
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [in_library, on_hand]
+          description: Фильтр по местоположению книги (in_library — в библиотеке, on_hand — на руках)
+          example: in_library
+      responses:
+        '200':
+          description: Список книг
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    Дата издания:
+                      type: integer
+                      example: 1876
+                    Жанр:
+                      type: string
+                      example: Детектив
+                    Издательство:
+                      type: string
+                      example: Дрофа
+                    Название:
+                      type: string
+                      example: Колобок
+                    Нахождение:
+                      type: string
+                      example: На руках
+                    Работник библиотеки:
+                      type: string
+                      example: Иванов Иван Иванович
+                    ФИО Автора:
+                      type: string
+                      example: Толстой Лев Николаевич
+                    Читатели:
+                      type: string
+                      example: Иванов Алексей Сергеевич
+                    Язык:
+                      type: string
+                      example: Русский
+        '401':
+          description: Не авторизован
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0

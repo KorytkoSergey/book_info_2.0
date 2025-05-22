@@ -1,0 +1,98 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для получения информации о читателях"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /writers:
+    post:
+      summary: Добавление нового писателя
+      description: Добавляет нового писателя в систему. Требует авторизации.
+      tags:
+        - Writers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - last_name
+                - name
+                - second_name
+                - birth_date
+                - nationality
+                - info
+              properties:
+                last_name:
+                  type: string
+                  example: Котовcкий
+                name:
+                  type: string
+                  example: Сашак
+                second_name:
+                  type: string
+                  example: Петрович
+                birth_date:
+                  type: string
+                  format: date
+                  example: 1928-09-19
+                nationality:
+                  type: integer
+                  description: ID из таблицы shelf.nation
+                  example: 58
+                info:
+                  type: string
+                  description: Краткая биография
+                  example: Где то родился, а где то пригодился!
+      responses:
+        '201':
+          description: Писатель добавлен
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Писатель добавлен
+        '400':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Ошибка в данных запроса
+        '401':
+          description: Неавторизован
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Необходима авторизация
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0
