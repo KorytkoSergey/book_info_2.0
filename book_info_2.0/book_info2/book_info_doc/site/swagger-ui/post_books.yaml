@@ -1,0 +1,115 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для добавления книги"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /books:
+    post:
+      tags:
+        - Добавление книги
+      summary: Добавление новой книги
+      description: Добавляет в базу данных книгу.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                book_name:
+                  type: string
+                  example: Маями Хит
+                date_publish:
+                  type: integer
+                  example: 1974
+                language:
+                  type: integer
+                  description: ID языка из таблицы `shelf.lang`
+                  example: 18
+                publish:
+                  type: integer
+                  description: ID издательства из таблицы `shelf.publish`
+                  example: 18
+                writer:
+                  type: integer
+                  description: ID автора из таблицы `shelf.writers`
+                  example: 200
+                genre:
+                  type: integer
+                  description: ID жанра из таблицы `shelf.genre`
+                  example: 13
+              required:
+                - book_name
+                - date_publish
+                - language
+                - publish
+                - writer
+                - genre
+      responses:
+        '201':
+          description: Книга успешно добавлена
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Книга добавлена
+                  book_info:
+                    type: object
+                    properties:
+                      book_id:
+                        type: integer
+                        example: 207
+                      book_name:
+                        type: string
+                        example: Маями Хит
+                      date_publish:
+                        type: integer
+                        example: 1974
+                      genre:
+                        type: integer
+                        example: 13
+                      language:
+                        type: integer
+                        example: 18
+                      publish:
+                        type: integer
+                        example: 18
+                      writer:
+                        type: integer
+                        example: 200
+        '400':
+          description: Ошибка на стороне клиента или сервера
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Ошибка добавления книги
+        '401':
+          description: Не авторизован
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0

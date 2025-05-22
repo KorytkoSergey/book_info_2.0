@@ -1,0 +1,144 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для получения информации о читателях"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /readers:
+    get:
+      summary: Получить список читателей
+      description: >
+        Возвращает список читателей с возможностью фильтрации по имени, абонементу,
+        статусу, дате рождения, количеству книг, телефону и email.
+        В имени вместо пробела используется подчёркивание `_`.
+      tags:
+        - Получить читателей
+      parameters:
+        - name: reader
+          in: query
+          description: Фильтр по ФИО (через подчёркивание вместо пробела)
+          required: false
+          schema:
+            type: string
+          example: Захарова_Ольга_Ивановна
+
+        - name: aboniment
+          in: query
+          description: Фильтр по абонементу
+          required: false
+          schema:
+            type: integer
+          example: 74185296
+
+        - name: is_active
+          in: query
+          description: Фильтр по статусу активности (true или false)
+          required: false
+          schema:
+            type: boolean
+          example: true
+
+        - name: birth_date_from
+          in: query
+          description: Дата рождения от (формат YYYY-MM-DD)
+          required: false
+          schema:
+            type: string
+            format: date
+          example: 1987-04-14
+
+        - name: birth_date_to
+          in: query
+          description: Дата рождения до (формат YYYY-MM-DD)
+          required: false
+          schema:
+            type: string
+            format: date
+          example: 1987-04-14
+
+        - name: phone_number
+          in: query
+          description: Фильтр по номеру телефона
+          required: false
+          schema:
+            type: string
+          example: "+79234567890"
+
+        - name: email
+          in: query
+          description: Фильтр по email
+          required: false
+          schema:
+            type: string
+            format: email
+          example: maria.sid@gmail.com
+
+        - name: min_books
+          in: query
+          description: Минимальное количество книг на руках
+          required: false
+          schema:
+            type: integer
+          example: 2
+
+        - name: max_books
+          in: query
+          description: Максимальное количество книг на руках
+          required: false
+          schema:
+            type: integer
+          example: 3
+
+      responses:
+        '200':
+          description: Список читателей
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                    Абонимент:
+                      type: integer
+                    Адрес:
+                      type: string
+                    Дата рождения:
+                      type: string
+                      example: "Sat, 15 Jul 1995 00:00:00 GMT"
+                    Действителен абонимент?:
+                      type: boolean
+                    Книги на руках:
+                      type: string
+                      description: Список книг в виде строки
+                    Номер телефона:
+                      type: string
+                    ФИО Читателя:
+                      type: string
+        '401':
+          description: Неавторизован (отсутствует или неверный токен)
+        '500':
+          description: Внутренняя ошибка сервера
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0

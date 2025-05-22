@@ -1,0 +1,110 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для получения информации о читателях"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /workers:
+    get:
+      summary: Получить список сотрудников
+      description: >
+        Возвращает информацию по сотрудникам библиотеки.  
+        Можно фильтровать по имени (`worker_name`), статусу (`status`), id (`worker_id`) и должности (`role`).
+        Примечание: пробелы в `worker_name` заменяются на подчёркивания (`_`).
+      tags:
+        - Workers
+      parameters:
+        - name: worker_id
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: ID работника
+        - name: worker_name
+          in: query
+          required: false
+          schema:
+            type: string
+            example: Иванов_Иван_Алексеевич
+          description: ФИО сотрудника с подчёркиваниями вместо пробелов
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [Работает, Уволен, Отпуск, Больничный]
+            example: Уволен
+          description: Статус сотрудника
+        - name: role
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [Старший библиотекарь, Младший библиотекарь, Директор, Стажер]
+            example: Стажер
+          description: Роль сотрудника
+      responses:
+        '200':
+          description: Успешный ответ. Список сотрудников.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    worker_id:
+                      type: integer
+                      example: 30
+                    birth_date:
+                      type: string
+                      example: Tue, 11 Oct 1988 00:00:00 GMT
+                    phone_number:
+                      type: string
+                      example: "789641256"
+                    email:
+                      type: string
+                      format: email
+                      example: filatov@example.com
+                    address:
+                      type: string
+                      example: г. Тверь
+                    role:
+                      type: string
+                      example: Стажер
+                    status:
+                      type: string
+                      example: Отпуск
+                    ФИО Сотрудника:
+                      type: string
+                      example: Филатов Константин Игоревич
+        '401':
+          description: Неавторизован (требуется токен)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Токен не предоставлен или недействителен
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0

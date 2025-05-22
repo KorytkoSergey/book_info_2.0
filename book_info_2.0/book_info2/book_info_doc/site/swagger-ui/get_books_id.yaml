@@ -1,0 +1,89 @@
+openapi: 3.0.1
+info:
+  title: "Book_info_2.0"
+  description: "endpoint для получения книги по ID"
+  version: "1.0"
+  contact:
+    name: "korytkosergei28@gmail.com"
+    email: "korytkosergei28@gmail.com"
+servers:
+- url: http://127.0.0.1:5000/
+  description: "Локальный сервер"
+- url: https://localhost:5000/
+  description: "Тоже окальный сервер, но с HTTPS + сразу место для будущего сервера"
+security:
+- BearerAuth: []
+paths:
+  /books/{book_id}:
+    get:
+      tags:
+      - Получение книги по ID
+      description: "Доступ к книгам, которые содержит база данных. Книги можно искать по ID."
+      operationId: GetBooksId
+      parameters:
+      - name: book_id
+        in: path
+        description: "**ID книги**. *Пример: 45*. ID книги, которую вы хотите получить. ID книги можно найти в базе данных book_info_db, схема shelf, таблица book"
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Дата издания:
+                    type: number
+                    description: "Формат даты просто год, например 2023"
+                    example: 2023
+                  Жанр:
+                    type: string
+                    description: "Жанр книги, например: Фантастика"
+                    example: Фантастика
+                  Издательство:
+                    type: string
+                    description: "Издательство книги, например: Эксмо"
+                    example: Эксмо
+                  Название:
+                    type: string
+                    description: "Название книги, например: Колобок"
+                    example: Колобок
+                  Нахождение:
+                    type: string
+                    description: "Где находится книга. Возможно два состояния: На руках или В библеотеке"
+                    example: На руках
+                  Работник библиотеки:
+                    type: string
+                    description: "Работник библиотеки, который выдал книгу. Например: Иванов Иван Иванович. Также может быть значение Ни кем не выдавалась, если книга не выдана"
+                    example: Иванов Иван Иванович
+                  ФИО Автора:
+                    type: string
+                    description: "ФИО автора книги. Например: Пушкин Александр Сергеевич"
+                    example: Пушкин Александр Сергеевич
+                  Язык:
+                    type: string
+                    description: "Язык книги. Например: Русский"
+                    example: Русский
+        "404":
+          description: Книга не найдена
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: "Книга не найдена"
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      description: Введите токен в формате **Bearer &lt;ваш токен&gt;**
+      name: Authorization
+      in: header
+externalDocs:
+  description: Github проекта
+  url: https://github.com/KorytkoSergey/book_info_2.0
