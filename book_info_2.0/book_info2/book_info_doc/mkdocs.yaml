@@ -15,6 +15,7 @@ nav:
     - Схема: db/schema.md
     - Стартовые скрипты: db/start_db.md
     - CRUD: db/crud.md
+  - Swagger UI: swagger.md
   - Авторизация: get_auth.md
   - API:
     - Книги:

@@ -27,7 +27,7 @@
 - [x]  Добавить readme в гит
 -  <span style="color: orange; font-weight: bold;">ver. 2.0</span>
 - [ ]  Добавление пагинации 
-- [ ]  Разворачивание swagger
+- [x]  Разворачивание swagger
 - [ ]  Телеграмм бот + дока к нему
 -  <span style="color: magenta; font-weight: bold;">ver. 3.0</span>
 *Данный раздел является дополнительным. Так сказать "лучшие практики"*
