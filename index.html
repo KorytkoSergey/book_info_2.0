@@ -216,7 +216,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#book_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Что такое book_info?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Кому может быть полезно?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Общая схема API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       История изменений
     </span>
@@ -225,7 +252,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       План развития
     </span>
@@ -1005,7 +1032,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#book_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Что такое book_info?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Кому может быть полезно?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Общая схема API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       История изменений
     </span>
@@ -1014,7 +1068,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       План развития
     </span>
@@ -1041,14 +1095,18 @@
   <h1>О проекте</h1>
 
 <h3 id="_1">Описание ресурса</h3>
-<p>Архитектурное решение для библиотек. Позволяет выдавать информацию о книгах, писателях и читателях. Позволяет получать информацию о сотрудниках и редактировать. </p>
-<p>Архитектура с разделением ответственности: выделенные API для обработки данных и оплаты, где API оплаты не имеет доступа к БД, а основной API централизует работу с данными и взаимодействие с хранилищем.</p>
+<h2 id="book_info">Что такое book_info?</h2>
+<p>book_info - архитектурное решение для библиотек. Решает проблему учета книг и писателей, читателей и сотрудников. </p>
+<h2 id="_2">Кому может быть полезно?</h2>
+<p>Данное архитектурное решение может быть полезно небольшим библиотекам, а также аналогичным организациям в которых присутствует учет предметов, сотрудников и клиентов. 
+Архитектура с разделением ответственности: API для обработки данных и оплаты, где API оплаты не имеет доступа к БД, а основной API централизует работу с данными и взаимодействие с хранилищем.</p>
+<h2 id="api">Общая схема API</h2>
 <p><a class="glightbox" href="https://raw.githubusercontent.com/KorytkoSergey/book_info_2.0/main/book_info_2.0/book_info2/book_info_doc/docs/images/schema_api.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Image title" loading="lazy" src="https://raw.githubusercontent.com/KorytkoSergey/book_info_2.0/main/book_info_2.0/book_info2/book_info_doc/docs/images/schema_api.png" /></a></p>
 <p>Фронтенда пока нет. В будущих версиях фронтом может выступать телеграмм бот. </p>
-<h2 id="_2">История изменений</h2>
+<h2 id="_3">История изменений</h2>
 <p>10.05.2025 Завершена <span style="color: orange; font-weight: bold;">ver. 1.0</span> Вся актуальная ифнормация по проекту содержится в этой документации.</p>
 <p>25.03.2025 Реализована БД на базе PostgresSQL. Также развернута не ассинхроное API на базе фреймворка Flask для отработки запросов и описания эндпоинтов.</p>
-<h2 id="_3">План развития</h2>
+<h2 id="_4">План развития</h2>
 <ul class="task-list">
 <li><span style="color: orange; font-weight: bold;">ver. 1.0</span></li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> Общее описание проекта.</li>
